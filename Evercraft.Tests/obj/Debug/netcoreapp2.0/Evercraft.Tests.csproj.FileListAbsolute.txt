@@ -1,0 +1,16 @@
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/NUnit3.TestAdapter.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/NUnit3.TestAdapter.pdb
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/nunit.engine.netstandard.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Mono.Cecil.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.Tests.deps.json
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.Tests.runtimeconfig.json
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.Tests.runtimeconfig.dev.json
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.Tests.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.Tests.pdb
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/bin/Debug/netcoreapp2.0/Evercraft.pdb
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/obj/Debug/netcoreapp2.0/Evercraft.Tests.csproj.CoreCompileInputs.cache
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/obj/Debug/netcoreapp2.0/Evercraft.Tests.AssemblyInfoInputs.cache
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/obj/Debug/netcoreapp2.0/Evercraft.Tests.AssemblyInfo.cs
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/obj/Debug/netcoreapp2.0/Evercraft.Tests.dll
+/Users/ewells/Documents/Evercraft/Evercraft.Tests/obj/Debug/netcoreapp2.0/Evercraft.Tests.pdb
