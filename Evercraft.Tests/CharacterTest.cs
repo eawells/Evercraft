@@ -5,27 +5,28 @@ namespace Test
 {
     public class CharacterTest
     {
+        Character character;
         [SetUp]
         public void Setup()
         {
+            character = new Character();
         }
 
         [Test]
         public void CharacterCanBeGivenAName()
         {
-            Character character = new Character();
             character.name = "Kingdom Death Monster";
             string name = character.name;
             Assert.AreEqual("Kingdom Death Monster", name);
         }
 
-        [Test]
-        public void CharacterHasAlignment()
+        [Test, Sequential]
+        public void CharacterHasAlignment(
+            [Values(Alignments.GOOD,Alignments.EVIL,Alignments.NEUTRAL)] Alignments TAlignment)
         {
-            Character character = new Character();
-            character.alignment = Alignments.GOOD;
+            character.alignment = TAlignment;
             Alignments actualAlignment = character.alignment;
-            Assert.AreEqual(Alignments.GOOD, actualAlignment);
+            Assert.AreEqual(TAlignment, actualAlignment);
         }
     }
 }

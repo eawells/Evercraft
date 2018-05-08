@@ -10,6 +10,8 @@ namespace Evercraft
 
     public enum Alignments
     {
-        GOOD
+        GOOD,
+        EVIL,
+        NEUTRAL
     }
 }
