@@ -28,5 +28,17 @@ namespace Test
             Alignments actualAlignment = character.alignment;
             Assert.AreEqual(TAlignment, actualAlignment);
         }
+
+        [Test]
+        public void CharacterHasArmorClassDefaultedTo10()
+        {
+            Assert.AreEqual(10, character.armor);
+        }
+
+        [Test]
+        public void CharacterHasHitPointsDefaultedTo5()
+        {
+            Assert.AreEqual(5, character.hitPoints);
+        }
     }
 }
