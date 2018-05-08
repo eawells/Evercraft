@@ -3,7 +3,7 @@ using Evercraft;
 
 namespace Test
 {
-    public class GameTest
+    public class CharacterTest
     {
         [SetUp]
         public void Setup()
@@ -11,10 +11,10 @@ namespace Test
         }
 
         [Test]
-        public void GameHasName()
+        public void CharacterHasName()
         {
-            Game game = new Game();
-            string name = game.getName();
+            Character character = new Character();
+            string name = character.getName();
             Assert.AreEqual("Kingdom Death Monster",name);
         }
     }

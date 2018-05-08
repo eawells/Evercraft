@@ -1,8 +1,0 @@
-/Users/ewells/Documents/Evercraft/Evercraft/bin/Debug/netstandard2.0/Evercraft.deps.json
-/Users/ewells/Documents/Evercraft/Evercraft/bin/Debug/netstandard2.0/Evercraft.dll
-/Users/ewells/Documents/Evercraft/Evercraft/bin/Debug/netstandard2.0/Evercraft.pdb
-/Users/ewells/Documents/Evercraft/Evercraft/obj/Debug/netstandard2.0/Evercraft.csproj.CoreCompileInputs.cache
-/Users/ewells/Documents/Evercraft/Evercraft/obj/Debug/netstandard2.0/Evercraft.AssemblyInfoInputs.cache
-/Users/ewells/Documents/Evercraft/Evercraft/obj/Debug/netstandard2.0/Evercraft.AssemblyInfo.cs
-/Users/ewells/Documents/Evercraft/Evercraft/obj/Debug/netstandard2.0/Evercraft.dll
-/Users/ewells/Documents/Evercraft/Evercraft/obj/Debug/netstandard2.0/Evercraft.pdb
