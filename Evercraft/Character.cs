@@ -4,8 +4,6 @@ namespace Evercraft
 {
     public class Character
     {
-        public string getName(){
-            return "Kingdom Death Monster";
-        }
+        public string name { get; set; }
     }
 }

@@ -11,11 +11,11 @@ namespace Test
         }
 
         [Test]
-        public void CharacterHasName()
-        {
+        public void CharacterCanBeGivenAName(){
             Character character = new Character();
-            string name = character.getName();
-            Assert.AreEqual("Kingdom Death Monster",name);
+            character.name = "Kingdom Death Monster";
+            string name = character.name;
+            Assert.AreEqual("Kingdom Death Monster", name);
         }
     }
 }
