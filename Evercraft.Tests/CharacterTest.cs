@@ -59,5 +59,14 @@ namespace Test
             mockedDie.Setup(die => die.GetRoll()).Returns(5);
             Assert.IsFalse(character.Attack(mockedDie.Object, attackedCharacter));
         }
+
+        [Test]
+        public void CharacterAttackSucceedsIfDieRollIsEqualToOpponentsArmor()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(10);
+            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+        }
     }
 }

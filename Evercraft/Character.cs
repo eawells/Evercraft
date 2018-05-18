@@ -16,7 +16,7 @@ namespace Evercraft
         }
         public bool Attack(IDie die, Character character)
         {
-            if(die.GetRoll() > character.armor)
+            if(die.GetRoll() >= character.armor)
             {
                return true;
             }
