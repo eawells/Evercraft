@@ -14,6 +14,14 @@ namespace Evercraft
             this.armor = 10;
             this.hitPoints = 5;
         }
+        public bool Attack(IDie die, Character character)
+        {
+            if(die.GetRoll() > character.armor)
+            {
+               return true;
+            }
+            return false;
+        }
     }
 
     public enum Alignments

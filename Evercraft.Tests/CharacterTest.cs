@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Evercraft;
+using Moq;
 
 namespace Test
 {
@@ -39,6 +40,24 @@ namespace Test
         public void CharacterHasHitPointsDefaultedTo5()
         {
             Assert.AreEqual(5, character.hitPoints);
+        }
+
+        [Test]
+        public void CharacterCanSuccessfullyAttackAnotherCharacter()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(11);
+            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+        }
+
+        [Test]
+        public void CharacterAttackFailsIfDieRollIsLessThanOpponentsArmor()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(5);
+            Assert.IsFalse(character.Attack(mockedDie.Object, attackedCharacter));
         }
     }
 }
