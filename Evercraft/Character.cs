@@ -18,6 +18,9 @@ namespace Evercraft
         {
             if(die.GetRoll() >= attackedCharacter.armor)
             {
+                if(die.GetRoll() == 20){
+                    attackedCharacter.hitPoints -= 1;
+                }
                 attackedCharacter.hitPoints -= 1;
                 return true;
             }

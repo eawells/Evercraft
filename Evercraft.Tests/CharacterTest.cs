@@ -88,5 +88,15 @@ namespace Test
             character.Attack(mockedDie.Object, attackedCharacter);
             Assert.AreEqual(5, attackedCharacter.hitPoints);
         }
+
+        [Test]
+        public void WhenCharacterAttacksWithRollOf20HitPointDamageIsDoubled()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(20);
+            character.Attack(mockedDie.Object, attackedCharacter);
+            Assert.AreEqual(3, attackedCharacter.hitPoints);
+        }
     }
 }
