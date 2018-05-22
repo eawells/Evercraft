@@ -98,5 +98,34 @@ namespace Test
             character.Attack(mockedDie.Object, attackedCharacter);
             Assert.AreEqual(3, attackedCharacter.hitPoints);
         }
+
+        [Test]
+        public void WhenAttackedCharacterHas0HitPointsTheyAreDead()
+        {
+            Character attackedCharacter = new Character();
+            attackedCharacter.hitPoints = 1;
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(12);
+            character.Attack(mockedDie.Object, attackedCharacter);
+            Assert.IsTrue(attackedCharacter.IsDead());
+        }
+
+        [Test]
+        public void WhenCharactersHitPointsGreaterThan0IsDeadReturnsFalse()
+        {
+            Character attackedCharacter = new Character();
+            Assert.IsFalse(attackedCharacter.IsDead());
+        }
+
+        [Test]
+        public void WhenAttackedCharacterHasNegative1HitPointsTheyAreDead()
+        {
+            Character attackedCharacter = new Character();
+            attackedCharacter.hitPoints = 1;
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(20);
+            character.Attack(mockedDie.Object, attackedCharacter);
+            Assert.IsTrue(attackedCharacter.IsDead());
+        }
     }
 }

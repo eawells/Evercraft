@@ -26,6 +26,11 @@ namespace Evercraft
             }
             return false;
         }
+
+        public bool IsDead()
+        {
+            return hitPoints <= 0;
+        }
     }
 
     public enum Alignments
