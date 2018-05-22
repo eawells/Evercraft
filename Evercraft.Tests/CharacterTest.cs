@@ -68,5 +68,25 @@ namespace Test
             mockedDie.Setup(die => die.GetRoll()).Returns(10);
             Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
         }
+
+        [Test]
+        public void WhenCharacterIsSuccessfullyAttackedHitPointsDecreaseByOne()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(10);
+            character.Attack(mockedDie.Object, attackedCharacter);
+            Assert.AreEqual(4,attackedCharacter.hitPoints);
+        }
+
+        [Test]
+        public void WhenCharacterIsUnsuccessfullyAttackedHitPointsStayTheSame()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(4);
+            character.Attack(mockedDie.Object, attackedCharacter);
+            Assert.AreEqual(5, attackedCharacter.hitPoints);
+        }
     }
 }

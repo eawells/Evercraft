@@ -14,11 +14,12 @@ namespace Evercraft
             this.armor = 10;
             this.hitPoints = 5;
         }
-        public bool Attack(IDie die, Character character)
+        public bool Attack(IDie die, Character attackedCharacter)
         {
-            if(die.GetRoll() >= character.armor)
+            if(die.GetRoll() >= attackedCharacter.armor)
             {
-               return true;
+                attackedCharacter.hitPoints -= 1;
+                return true;
             }
             return false;
         }
