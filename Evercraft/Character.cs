@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Evercraft
 {
@@ -9,16 +10,24 @@ namespace Evercraft
 
         public int armor { get; set; }
         public int hitPoints { get; set; }
+
+        public int strength { get; set; }
+
         public Character()
         {
             this.armor = 10;
             this.hitPoints = 5;
+            this.strength = 10;
+
         }
         public bool Attack(IDie die, Character attackedCharacter)
         {
-            if(die.GetRoll() >= attackedCharacter.armor)
-            {
-                if(die.GetRoll() == 20){
+            var rollTotal = die.GetRoll();
+            rollTotal += AbilitiesScores.AbilityScore[this.strength];
+
+            if(rollTotal >= attackedCharacter.armor)
+            { //die roll //adjust per abilities //attack
+                if(rollTotal == 20){
                     attackedCharacter.hitPoints -= 1;
                 }
                 attackedCharacter.hitPoints -= 1;

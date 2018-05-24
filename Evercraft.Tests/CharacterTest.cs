@@ -127,5 +127,15 @@ namespace Test
             character.Attack(mockedDie.Object, attackedCharacter);
             Assert.IsTrue(attackedCharacter.IsDead());
         }
+
+        [Test]
+        public void GivenStrengthOf12WhenCharacterAttacksAttackIsSuccessfulWithRollOf9()
+        {
+            character.strength = 12;
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(9);
+            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+        }
     }
 }
