@@ -25,25 +25,29 @@ namespace Evercraft
             var rollTotal = die.GetRoll();
             var modifier = AbilitiesScores.AbilityScore[this.strength];
 
-            if(rollTotal == 20)
+            var didHit = CheckHit(rollTotal, modifier, attackedCharacter);
+
+            if (didHit)
             {
-                attackedCharacter.hitPoints -= Math.Max(1,(2 + modifier * 2));
-                return true;
+                attackedCharacter.hitPoints -= CalculateDamage(rollTotal, modifier);
             }
-
-            rollTotal += modifier;
-
-            if(rollTotal >= attackedCharacter.armor)
-            { //die roll //adjust per abilities //attack
-                attackedCharacter.hitPoints -= Math.Max(1,(1 + modifier));
-                return true;
-            }
-            return false;
+            return didHit;
         }
 
         public bool IsDead()
         {
             return hitPoints <= 0;
+        }
+
+        private bool CheckHit(int rollTotal, int modifier, Character attackedCharacter)
+        {
+            return rollTotal == 20 || (rollTotal + modifier) >= attackedCharacter.armor;
+        }
+
+        private int CalculateDamage(int rollTotal, int modifier)
+        {
+            var multiplier = rollTotal == 20 ? 2 : 1;
+            return Math.Max(1,(multiplier * (1 + modifier)));
         }
     }
 
