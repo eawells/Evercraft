@@ -137,5 +137,18 @@ namespace Test
             mockedDie.Setup(die => die.GetRoll()).Returns(9);
             Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
         }
+
+        [Test]
+        public void GivenStrengthOf12WhenCharacterAttacksSuccessfullyDamageAdjustsForStrengthModifier()
+        {
+            character.strength = 12;
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(9);
+
+            character.Attack(mockedDie.Object, attackedCharacter);
+
+            Assert.AreEqual(3, attackedCharacter.hitPoints);
+        }
     }
 }

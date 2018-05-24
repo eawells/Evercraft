@@ -30,7 +30,7 @@ namespace Evercraft
                 if(rollTotal == 20){
                     attackedCharacter.hitPoints -= 1;
                 }
-                attackedCharacter.hitPoints -= 1;
+                attackedCharacter.hitPoints -= (1 + AbilitiesScores.AbilityScore[this.strength]);
                 return true;
             }
             return false;
