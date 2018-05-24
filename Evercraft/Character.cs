@@ -13,11 +13,14 @@ namespace Evercraft
 
         public int strength { get; set; }
 
+        public int dexterity { get; set; }
+
         public Character()
         {
             this.armor = 10;
             this.hitPoints = 5;
             this.strength = 10;
+            this.dexterity = 10;
 
         }
         public bool Attack(IDie die, Character attackedCharacter)
@@ -41,7 +44,12 @@ namespace Evercraft
 
         private bool CheckHit(int rollTotal, int modifier, Character attackedCharacter)
         {
-            return rollTotal == 20 || (rollTotal + modifier) >= attackedCharacter.armor;
+            return rollTotal == 20 || (rollTotal + modifier) >= attackedCharacter.ModifiedArmor();
+        }
+
+        public int ModifiedArmor()
+        {
+            return this.armor + AbilitiesScores.AbilityScore[this.dexterity];
         }
 
         private int CalculateDamage(int rollTotal, int modifier)

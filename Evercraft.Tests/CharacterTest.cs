@@ -189,5 +189,16 @@ namespace Test
 
             Assert.AreEqual(4, attackedCharacter.hitPoints);
         }
+
+        [Test]
+        public void GivenAttackedCharacterWithDexterity12AndRollOf10AttackFails()
+        {
+            Character attackedCharacter = new Character();
+            attackedCharacter.dexterity = 12;
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(10);
+
+            Assert.IsFalse(character.Attack(mockedDie.Object, attackedCharacter));
+        }
     }
 }
