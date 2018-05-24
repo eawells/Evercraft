@@ -23,14 +23,19 @@ namespace Evercraft
         public bool Attack(IDie die, Character attackedCharacter)
         {
             var rollTotal = die.GetRoll();
-            rollTotal += AbilitiesScores.AbilityScore[this.strength];
+            var modifier = AbilitiesScores.AbilityScore[this.strength];
+
+            if(rollTotal == 20)
+            {
+                attackedCharacter.hitPoints -= Math.Max(1,(2 + modifier * 2));
+                return true;
+            }
+
+            rollTotal += modifier;
 
             if(rollTotal >= attackedCharacter.armor)
             { //die roll //adjust per abilities //attack
-                if(rollTotal == 20){
-                    attackedCharacter.hitPoints -= 1;
-                }
-                attackedCharacter.hitPoints -= (1 + AbilitiesScores.AbilityScore[this.strength]);
+                attackedCharacter.hitPoints -= Math.Max(1,(1 + modifier));
                 return true;
             }
             return false;

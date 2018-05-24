@@ -150,5 +150,44 @@ namespace Test
 
             Assert.AreEqual(3, attackedCharacter.hitPoints);
         }
+
+        [Test]
+        public void GivenAStrengthOf12AndACriticalHitTotalDamageDealtIsDoubled()
+        {
+            character.strength = 12;
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(20);
+
+            character.Attack(mockedDie.Object, attackedCharacter);
+
+            Assert.AreEqual(1, attackedCharacter.hitPoints);
+        }
+
+        [Test]
+        public void GivenAStrengthOf1AndAHitMinimumDamageIs1()
+        {
+            character.strength = 1;
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(15);
+
+            character.Attack(mockedDie.Object, attackedCharacter);
+
+            Assert.AreEqual(4, attackedCharacter.hitPoints);
+        }
+
+        [Test]
+        public void GivenAStrengthOf1AndACritialHitMinimumDamageIs1()
+        {
+            character.strength = 1;
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(20);
+
+            character.Attack(mockedDie.Object, attackedCharacter);
+
+            Assert.AreEqual(4, attackedCharacter.hitPoints);
+        }
     }
 }
