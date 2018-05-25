@@ -200,5 +200,32 @@ namespace Test
 
             Assert.IsFalse(character.Attack(mockedDie.Object, attackedCharacter));
         }
+
+        [Test]
+        public void GivenAttackedCharacterWithDexterity1AndRollOf5AttackSucceeds()
+        {
+            Character attackedCharacter = new Character();
+            attackedCharacter.dexterity = 1;
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(5);
+
+            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+        }
+
+        [Test]
+        public void WhenCharacterIsCreatedWithConstitutionScore15HitPointsAdjustedTo7()
+        {
+            Character customCharacter = new Character(10, 10, 15);
+            var expectedHitPoints = 7;
+            Assert.AreEqual(expectedHitPoints, customCharacter.hitPoints);
+        }
+
+        [Test]
+        public void WhenCharacterIsCreatedWithConstitutionScore1HitPointsIs1()
+        {
+            Character customCharacter = new Character(10, 10, 1);
+            var expectedHitPoints = 1;
+            Assert.AreEqual(expectedHitPoints, customCharacter.hitPoints);
+        }
     }
 }

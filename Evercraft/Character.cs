@@ -14,6 +14,7 @@ namespace Evercraft
         public int strength { get; set; }
 
         public int dexterity { get; set; }
+        public int constitution { get; set; }
 
         public Character()
         {
@@ -21,8 +22,17 @@ namespace Evercraft
             this.hitPoints = 5;
             this.strength = 10;
             this.dexterity = 10;
-
         }
+
+        public Character(int strength, int dexterity, int constitution)
+        {
+            this.armor = 10 + AbilitiesScores.AbilityScore[dexterity];
+            this.hitPoints = (5 + AbilitiesScores.AbilityScore[constitution]) <= 0 ? 1 : (5 + AbilitiesScores.AbilityScore[constitution]);
+            this.strength = strength;
+            this.dexterity = dexterity;
+            this.constitution = constitution;
+        }
+
         public bool Attack(IDie die, Character attackedCharacter)
         {
             var rollTotal = die.GetRoll();
