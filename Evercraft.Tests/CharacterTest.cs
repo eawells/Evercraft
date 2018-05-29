@@ -131,22 +131,22 @@ namespace Test
         [Test]
         public void GivenStrengthOf12WhenCharacterAttacksAttackIsSuccessfulWithRollOf9()
         {
-            character.strength = 12;
+            Character attacker = new Character(12,10,10);
             Character attackedCharacter = new Character();
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(9);
-            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+            Assert.IsTrue(attacker.Attack(mockedDie.Object, attackedCharacter));
         }
 
         [Test]
         public void GivenStrengthOf12WhenCharacterAttacksSuccessfullyDamageAdjustsForStrengthModifier()
         {
-            character.strength = 12;
+            Character attacker = new Character(12,10,10);
             Character attackedCharacter = new Character();
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(9);
 
-            character.Attack(mockedDie.Object, attackedCharacter);
+            attacker.Attack(mockedDie.Object, attackedCharacter);
 
             Assert.AreEqual(3, attackedCharacter.hitPoints);
         }
@@ -154,12 +154,12 @@ namespace Test
         [Test]
         public void GivenAStrengthOf12AndACriticalHitTotalDamageDealtIsDoubled()
         {
-            character.strength = 12;
+            Character attacker = new Character(12,10,10);
             Character attackedCharacter = new Character();
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(20);
 
-            character.Attack(mockedDie.Object, attackedCharacter);
+            attacker.Attack(mockedDie.Object, attackedCharacter);
 
             Assert.AreEqual(1, attackedCharacter.hitPoints);
         }
@@ -167,12 +167,12 @@ namespace Test
         [Test]
         public void GivenAStrengthOf1AndAHitMinimumDamageIs1()
         {
-            character.strength = 1;
+            Character attacker = new Character(1,10,10);
             Character attackedCharacter = new Character();
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(15);
 
-            character.Attack(mockedDie.Object, attackedCharacter);
+            attacker.Attack(mockedDie.Object, attackedCharacter);
 
             Assert.AreEqual(4, attackedCharacter.hitPoints);
         }
@@ -180,12 +180,12 @@ namespace Test
         [Test]
         public void GivenAStrengthOf1AndACritialHitMinimumDamageIs1()
         {
-            character.strength = 1;
+            Character attacker = new Character(1,10,10);
             Character attackedCharacter = new Character();
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(20);
 
-            character.Attack(mockedDie.Object, attackedCharacter);
+            attacker.Attack(mockedDie.Object, attackedCharacter);
 
             Assert.AreEqual(4, attackedCharacter.hitPoints);
         }
@@ -193,8 +193,7 @@ namespace Test
         [Test]
         public void GivenAttackedCharacterWithDexterity12AndRollOf10AttackFails()
         {
-            Character attackedCharacter = new Character();
-            attackedCharacter.dexterity = 12;
+            Character attackedCharacter = new Character(10,12,10);
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(10);
 
@@ -204,8 +203,7 @@ namespace Test
         [Test]
         public void GivenAttackedCharacterWithDexterity1AndRollOf5AttackSucceeds()
         {
-            Character attackedCharacter = new Character();
-            attackedCharacter.dexterity = 1;
+            Character attackedCharacter = new Character(10,1,10);
             var mockedDie = new Mock<IDie>();
             mockedDie.Setup(die => die.GetRoll()).Returns(5);
 
@@ -227,5 +225,24 @@ namespace Test
             var expectedHitPoints = 1;
             Assert.AreEqual(expectedHitPoints, customCharacter.hitPoints);
         }
+
+        [Test]
+        public void WhenCharacterIsCreatedWithDexterityScore1HitPointsAdjustedTo5()
+        {
+            Character customCharacter = new Character(10, 1, 10);
+            var expectedArmor = 5;
+            Assert.AreEqual(expectedArmor, customCharacter.armor);
+        }
+
+        [Test]
+        public void GivenAttackedCustomCharacterWithDexterity12AndRollOf11AttackSucceeds()
+        {
+            Character attackedCharacter = new Character(10, 12, 10);
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(11);
+
+            Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
+        }
+
     }
 }
