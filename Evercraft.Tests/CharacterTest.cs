@@ -273,6 +273,15 @@ namespace Test
             Assert.AreEqual(expectedLevel,character.level);
         }
 
+        [Test]
+        public void WhenACharacterAttacksSuccessfully99TimesTheirLevelIsStill1()
+        {
+            AttackNTimesSuccessfully(99, character);
+            int expectedLevel = 1;
+            Assert.AreEqual(expectedLevel,character.level);
+
+        }
+
         public void AttackNTimesSuccessfully(int n, Character attacker)
         {
             var attackedCharacter = new Character(1, 1, 1);

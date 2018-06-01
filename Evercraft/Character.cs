@@ -24,7 +24,7 @@ namespace Evercraft
         {
             get
             {
-                if(XP > 10){ return 2; }
+                if(XP >= 1000){ return 2; }
                 return 1;
             }
         }
