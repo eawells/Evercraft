@@ -18,6 +18,17 @@ namespace Evercraft
 
         public int constitution { get; }
 
+        public int XP { get; private set; }
+
+        public int level
+        {
+            get
+            {
+                if(XP > 10){ return 2; }
+                return 1;
+            }
+        }
+
         public Character()
         {
             this.armor = 10;
@@ -46,6 +57,7 @@ namespace Evercraft
             if (didHit)
             {
                 attackedCharacter.hitPoints -= CalculateDamage(rollTotal, modifier);
+                this.XP += 10;
             }
             return didHit;
         }

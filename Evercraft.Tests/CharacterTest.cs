@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Evercraft;
 using Moq;
+using System.Linq;
 
 namespace Test
 {
@@ -244,5 +245,45 @@ namespace Test
             Assert.IsTrue(character.Attack(mockedDie.Object, attackedCharacter));
         }
 
+        [Test]
+        public void WhenACharacterAttacksSuccessfullyTheyGain10XP()
+        {
+            Character attackedCharacter = new Character();
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(12);
+
+            character.Attack(mockedDie.Object, attackedCharacter);
+            var expectedXP = 10;
+            Assert.AreEqual(expectedXP, character.XP);
+        }
+
+        [Test]
+        public void WhenACharacterIsCreatedTheyAreLevelOne()
+        {
+            int expectedLevel = 1;
+            Assert.AreEqual(expectedLevel,character.level);
+        }
+
+        [Test]
+        public void WhenACharacterAttacksSuccessfully100TimesTheirLevelIs2()
+        {
+            AttackNTimesSuccessfully(100, character);
+
+            int expectedLevel = 2;
+            Assert.AreEqual(expectedLevel,character.level);
+        }
+
+        public void AttackNTimesSuccessfully(int n, Character attacker)
+        {
+            var attackedCharacter = new Character(1, 1, 1);
+
+            var mockedDie = new Mock<IDie>();
+            mockedDie.Setup(die => die.GetRoll()).Returns(18);
+
+            foreach (int i in Enumerable.Range(1, n))
+            {
+                attacker.Attack(mockedDie.Object, attackedCharacter);
+            }
+        }
     }
 }
