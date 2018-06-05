@@ -283,7 +283,7 @@ namespace Test
         }
 
         [Test]
-        public void WhenACharacterAttacksSuccessfullyNTimesTheirLevelIsNDividedBy100Plus1()
+        public void WhenACharacterAttacksSuccessfullyNTimesTheirLevelIsXPDividedBy1000Plus1()
         {
             int n = 678;
             AttackNTimesSuccessfully(n, character);
