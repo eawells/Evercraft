@@ -24,8 +24,8 @@ namespace Evercraft
         {
             get
             {
-                if(XP >= 1000){ return 2; }
-                return 1;
+                double levelIncludingPartialLevelMinusOne = XP/1000;
+                return (int) Math.Floor(levelIncludingPartialLevelMinusOne) + 1;
             }
         }
 

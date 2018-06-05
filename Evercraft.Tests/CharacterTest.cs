@@ -282,6 +282,16 @@ namespace Test
 
         }
 
+        [Test]
+        public void WhenACharacterAttacksSuccessfullyNTimesTheirLevelIsNDividedBy100Plus1()
+        {
+            int n = 678;
+            AttackNTimesSuccessfully(n, character);
+            int expectedLevel = 7;
+            Assert.AreEqual(expectedLevel,character.level);
+
+        }
+
         public void AttackNTimesSuccessfully(int n, Character attacker)
         {
             var attackedCharacter = new Character(1, 1, 1);
