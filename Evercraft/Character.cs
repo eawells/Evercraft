@@ -58,6 +58,7 @@ namespace Evercraft
             {
                 attackedCharacter.hitPoints -= CalculateDamage(rollTotal, modifier);
                 this.XP += 10;
+                this.hitPoints = this.level * 5;
             }
             return didHit;
         }

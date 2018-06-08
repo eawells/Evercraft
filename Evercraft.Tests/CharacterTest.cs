@@ -279,7 +279,6 @@ namespace Test
             AttackNTimesSuccessfully(99, character);
             int expectedLevel = 1;
             Assert.AreEqual(expectedLevel,character.level);
-
         }
 
         [Test]
@@ -290,6 +289,13 @@ namespace Test
             int expectedLevel = 7;
             Assert.AreEqual(expectedLevel,character.level);
 
+        }
+
+        [Test]
+        public void WhenACharacterIsLevelTwoTheirHitPointsIs10()
+        {
+            AttackNTimesSuccessfully(100, character);
+            Assert.AreEqual(10,character.hitPoints);
         }
 
         public void AttackNTimesSuccessfully(int n, Character attacker)
